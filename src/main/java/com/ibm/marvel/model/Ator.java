@@ -27,6 +27,12 @@ public class Ator implements Serializable {
     @OneToOne(cascade= CascadeType.ALL, mappedBy = "ator")
     private Heroi heroi;
 
+    public Ator(Integer id, String nome, Date dataDeNascimento) {
+        this.id = id;
+        this.nome = nome;
+        this.dataDeNascimento = dataDeNascimento;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

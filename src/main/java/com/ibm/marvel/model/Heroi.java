@@ -7,9 +7,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 @Entity
 @AllArgsConstructor
@@ -28,17 +26,26 @@ public class Heroi implements Serializable {
 
     @ManyToMany @JoinTable(name="HEROI_PODER", joinColumns = @JoinColumn(name ="heroi_id"),
             inverseJoinColumns = @JoinColumn(name ="poder_id"))
-    private List<Poder> poderes = new ArrayList<>();
+    private Set<Poder> poderes = new HashSet<>();
 
     @OneToOne @JoinColumn(name = "ator_id")
     @JsonIgnore
     private Ator ator;
-    @ManyToOne @JoinColumn(name="criador_id")
+    @ManyToOne @JoinColumn(name="criador_id") @JsonIgnore
     private Criador criador;
 
+
     @ManyToMany @JoinTable(name="HEROI_MIDIA", joinColumns = @JoinColumn(name ="heroi_id"),
-            inverseJoinColumns = @JoinColumn(name ="midia_id"))
-    private List<Midia> midias = new ArrayList<>();
+            inverseJoinColumns = @JoinColumn(name ="midia_id")) @JsonIgnore
+    private Set<Midia> midias = new HashSet<>();
+
+    public Heroi(Integer id, String nome, String origem, Ator ator, Criador criador) {
+        this.id = id;
+        this.nome = nome;
+        this.origem = origem;
+        this.ator = ator;
+        this.criador = criador;
+    }
 
     @Override
     public boolean equals(Object o) {

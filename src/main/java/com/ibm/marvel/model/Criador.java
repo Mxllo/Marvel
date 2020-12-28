@@ -3,6 +3,8 @@ package com.ibm.marvel.model;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -25,6 +27,11 @@ public class Criador implements Serializable {
     private List<Poder> poderes = new ArrayList<>();
     @OneToMany(mappedBy="criador")
     private List<Midia> midias = new ArrayList<>();
+
+    public Criador(Integer id, String nome) {
+        this.id = id;
+        this.nome = nome;
+    }
 
     @Override
     public boolean equals(Object o) {

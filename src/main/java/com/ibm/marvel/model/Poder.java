@@ -1,5 +1,6 @@
 package com.ibm.marvel.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -19,10 +20,16 @@ public class Poder implements Serializable {
     private Integer id;
     private String nome;
     @ManyToOne
-    @JoinColumn(name="criador_id")
+    @JoinColumn(name="criador_id") @JsonIgnore
     private Criador criador;
-    @ManyToMany(mappedBy = "poderes")
+    @ManyToMany(mappedBy = "poderes") @JsonIgnore
     private List<Heroi> herois = new ArrayList<>();
+
+    public Poder(Integer id, String nome, Criador criador) {
+        this.id = id;
+        this.nome = nome;
+        this.criador = criador;
+    }
 
     @Override
     public boolean equals(Object o) {

@@ -17,8 +17,8 @@ public class Revista extends Midia{
         this.paginas = paginas;
     }
 
-    public Revista(Integer id, Criador criador, String nome, ClassificacaoIndicativa classificacao, List<Heroi> herois, Integer paginas) {
-        super(id, criador, nome, classificacao, herois);
+    public Revista(Integer id, Criador criador, String nome, ClassificacaoIndicativa classificacao, Integer paginas) {
+        super(id, criador, nome, classificacao);
         this.paginas = paginas;
     }
 }

@@ -4,7 +4,7 @@ import com.ibm.marvel.model.enums.ClassificacaoIndicativa;
 import lombok.*;
 
 import javax.persistence.Entity;
-import java.sql.Time;
+import java.time.LocalTime;
 import java.util.List;
 
 @Entity
@@ -12,14 +12,11 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 public class Filme extends Midia{
-    private Time duracao;
+    private LocalTime duracao;
 
-    public Filme(Time duracao) {
-        this.duracao = duracao;
-    }
 
-    public Filme(Integer id, Criador criador, String nome, ClassificacaoIndicativa classificacao, List<Heroi> herois, Time duracao) {
-        super(id, criador, nome, classificacao, herois);
+    public Filme(Integer id, Criador criador, String nome, ClassificacaoIndicativa classificacao, LocalTime duracao) {
+        super(id, criador, nome, classificacao);
         this.duracao = duracao;
     }
 }
