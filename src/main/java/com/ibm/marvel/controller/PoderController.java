@@ -1,9 +1,10 @@
 package com.ibm.marvel.controller;
 
-import com.ibm.marvel.dtos.CriadorDTO;
-import com.ibm.marvel.dtos.id.CriadorIdDTO;
-import com.ibm.marvel.model.Criador;
-import com.ibm.marvel.services.CriadorService;
+import com.ibm.marvel.dtos.PoderDTO;
+import com.ibm.marvel.dtos.id.PoderIdDTO;
+import com.ibm.marvel.dtos.insert.PoderNewDTO;
+import com.ibm.marvel.model.Poder;
+import com.ibm.marvel.services.PoderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,21 +14,22 @@ import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
 
+
 @RestController
-@RequestMapping("/criador")
-public class CriadorController {
+@RequestMapping("/Poder")
+public class PoderController {
 
     @Autowired
-    private CriadorService service;
+    private PoderService service;
 
     @RequestMapping(value="/{id}", method = RequestMethod.GET)
-    public ResponseEntity<CriadorIdDTO> find (@PathVariable Integer id)  {
-        Criador obj = service.find(id);
-        return ResponseEntity.ok().body(new CriadorIdDTO(obj));
+    public ResponseEntity<PoderIdDTO> find (@PathVariable Integer id)  {
+        Poder obj = service.find(id);
+        return ResponseEntity.ok().body(new PoderIdDTO(obj));
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<Void> insert(@RequestBody Criador obj) {
+    public ResponseEntity<Void> insert(@RequestBody PoderNewDTO obj) {
         obj = service.insert(obj);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
                 .buildAndExpand(obj.getId()).toUri();
@@ -35,9 +37,9 @@ public class CriadorController {
     }
 
     @RequestMapping(value ="/{id}", method =RequestMethod.PUT)
-    public ResponseEntity<Void> update(@PathVariable Integer id, @RequestBody Criador obj){
+    public ResponseEntity<Void> update(@PathVariable Integer id, @RequestBody PoderNewDTO obj){
         obj.setId(id);
-        obj = service.update(obj);
+        service.update(obj);
         return ResponseEntity.accepted().build();
     }
 
@@ -48,9 +50,9 @@ public class CriadorController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public ResponseEntity<List<CriadorDTO>> findAll()  {
-        List<Criador> list = service.findAll();
-        List<CriadorDTO> dto = list.stream().map(CriadorDTO::new).collect(Collectors.toList());
+    public ResponseEntity<List<PoderDTO>> findAll()  {
+        List<Poder> list = service.findAll();
+        List<PoderDTO> dto = list.stream().map(PoderDTO::new).collect(Collectors.toList());
         return ResponseEntity.ok().body(dto);
     }
 

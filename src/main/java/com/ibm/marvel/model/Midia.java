@@ -22,7 +22,7 @@ public abstract class Midia implements Serializable {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @ManyToOne
-    @JoinColumn(name="criador_id") @JsonIgnore
+    @JoinColumn(name="criador_id")
     private Criador criador;
     private String nome;
     private ClassificacaoIndicativa classificacao;

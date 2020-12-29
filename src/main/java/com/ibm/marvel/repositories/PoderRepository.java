@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface PoderRepository extends JpaRepository<Poder, Integer> {
+    Integer findByNome(String nome);
 }

@@ -29,14 +29,14 @@ public class Heroi implements Serializable {
     private Set<Poder> poderes = new HashSet<>();
 
     @OneToOne @JoinColumn(name = "ator_id")
-    @JsonIgnore
+    
     private Ator ator;
-    @ManyToOne @JoinColumn(name="criador_id") @JsonIgnore
+    @ManyToOne @JoinColumn(name="criador_id") 
     private Criador criador;
 
 
     @ManyToMany @JoinTable(name="HEROI_MIDIA", joinColumns = @JoinColumn(name ="heroi_id"),
-            inverseJoinColumns = @JoinColumn(name ="midia_id")) @JsonIgnore
+            inverseJoinColumns = @JoinColumn(name ="midia_id")) 
     private Set<Midia> midias = new HashSet<>();
 
     public Heroi(Integer id, String nome, String origem, Ator ator, Criador criador) {
