@@ -1,6 +1,6 @@
 package com.ibm.marvel.dtos;
 
-import com.ibm.marvel.model.Criador;
+import com.ibm.marvel.model.Ator;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
@@ -8,15 +8,15 @@ import java.io.Serializable;
 
 @NoArgsConstructor
 @AllArgsConstructor
-public class CriadorDTO implements Serializable {
+public class AtorDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private Integer id;
     private String nome;
 
-    public CriadorDTO(Criador criador) {
-        this.id = criador.getId();
-        this.nome = criador.getNome();
+    public AtorDTO(Ator ator) {
+        this.id = ator.getId();
+        this.nome = ator.getNome();
     }
 
     public Integer getId() {
