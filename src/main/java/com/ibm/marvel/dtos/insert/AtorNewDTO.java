@@ -1,5 +1,6 @@
 package com.ibm.marvel.dtos.insert;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.ibm.marvel.model.Ator;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -18,6 +19,7 @@ public class AtorNewDTO implements Serializable {
     //@NotEmpty(message="Preenchimento obrigatório")
     private String nome;
     //@NotEmpty(message="Preenchimento obrigatório")
+    @JsonFormat(pattern = "dd/MM/yyyy")
     private Date dataDeNascimento;
 
     public AtorNewDTO(Ator ator) {
