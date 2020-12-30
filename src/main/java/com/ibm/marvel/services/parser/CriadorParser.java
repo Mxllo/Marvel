@@ -8,6 +8,8 @@ import com.ibm.marvel.model.Criador;
 import java.util.HashSet;
 import java.util.Set;
 
+import static com.ibm.marvel.services.parser.MidiaParser.classDefiner;
+
 public class CriadorParser {
 
     public static Set<HeroiDTO> parseHeroi(Criador criador){
@@ -29,7 +31,7 @@ public class CriadorParser {
     public static Set<MidiaDTO> parseMidia (Criador criador){
         Set<MidiaDTO> medias = new HashSet<>();
         criador.getMidias().forEach((midia) -> {
-            medias.add(new MidiaDTO(midia.getId(), midia.getNome()));
+            medias.add(new MidiaDTO(midia.getId(), midia.getNome(), classDefiner(midia)));
         });
         return medias;
     }

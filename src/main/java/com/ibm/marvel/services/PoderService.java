@@ -1,6 +1,8 @@
 package com.ibm.marvel.services;
 
+import com.ibm.marvel.dtos.PoderDTO;
 import com.ibm.marvel.dtos.insert.PoderNewDTO;
+import com.ibm.marvel.model.Criador;
 import com.ibm.marvel.model.Poder;
 import com.ibm.marvel.repositories.PoderRepository;
 import com.ibm.marvel.services.exception.DataIntegrityException;
@@ -9,11 +11,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
+import java.io.Serializable;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @Service
-public class PoderService {
+public class PoderService implements Serializable {
+    private static final long serialVersionUID = 1L;
 
     @Autowired
     private PoderRepository repo;
@@ -60,4 +66,18 @@ public class PoderService {
         return new Poder(novoPoder.getId(), novoPoder.getNome(), criadorService.findByNome(novoPoder.getCriador()));
     }
 
+    public Poder findByNome(String nome) {
+        Optional<Poder> obj = repo.findByNome(nome);
+        return obj.orElseThrow(() -> new ObjectNotFoundException(
+                "Objeto não encontrado! Nome: " + nome + ", Tipo: " + Criador.class.getName()));
+    }
+
+    public Set<Poder> parsePoder(Set<String> poderesString){
+        Set<Poder> poderes = new HashSet<>();
+        poderesString.forEach((poder) -> {
+            poderes.add(findByNome(poder));
+
+        });
+        return poderes;
+    }
 }

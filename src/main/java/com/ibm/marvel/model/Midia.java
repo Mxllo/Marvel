@@ -11,6 +11,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 
@@ -27,13 +28,14 @@ public abstract class Midia implements Serializable {
     private String nome;
     private ClassificacaoIndicativa classificacao;
     @ManyToMany(mappedBy = "midias")
-    private List<Heroi> herois = new ArrayList<>();
+    private Set<Heroi> herois;
 
-    public Midia(Integer id, Criador criador, String nome, ClassificacaoIndicativa classificacao) {
+    public Midia(Integer id, Criador criador, String nome, ClassificacaoIndicativa classificacao, Set<Heroi> herois) {
         this.id = id;
         this.criador = criador;
         this.nome = nome;
         this.classificacao = classificacao;
+        this.herois = herois;
     }
 
     @Override

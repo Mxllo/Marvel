@@ -1,35 +1,35 @@
 package com.ibm.marvel.controller;
 
-import com.ibm.marvel.dtos.AtorDTO;
-import com.ibm.marvel.dtos.id.AtorIdDTO;
-import com.ibm.marvel.dtos.insert.AtorNewDTO;
-import com.ibm.marvel.model.Ator;
-import com.ibm.marvel.services.AtorService;
+import com.ibm.marvel.dtos.HeroiDTO;
+import com.ibm.marvel.dtos.id.HeroiIdDTO;
+import com.ibm.marvel.dtos.insert.HeroiNewDTO;
+import com.ibm.marvel.model.Heroi;
+import com.ibm.marvel.services.HeroiService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
 
+
 @RestController
-@RequestMapping("/ator")
-public class AtorController {
+@RequestMapping("/heroi")
+public class HeroiController {
 
     @Autowired
-    private AtorService service;
+    private HeroiService service;
 
     @RequestMapping(value="/{id}", method = RequestMethod.GET)
-    public ResponseEntity<AtorIdDTO> find (@PathVariable Integer id)  {
-        Ator obj = service.find(id);
-        return ResponseEntity.ok().body(new AtorIdDTO(obj));
+    public ResponseEntity<HeroiIdDTO> find (@PathVariable Integer id)  {
+        Heroi obj = service.find(id);
+        return ResponseEntity.ok().body(new HeroiIdDTO(obj));
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<Void> insert(@RequestBody AtorNewDTO obj) {
+    public ResponseEntity<Void> insert(@RequestBody HeroiNewDTO obj) {
         obj = service.insert(obj);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
                 .buildAndExpand(obj.getId()).toUri();
@@ -37,9 +37,9 @@ public class AtorController {
     }
 
     @RequestMapping(value ="/{id}", method =RequestMethod.PUT)
-    public ResponseEntity<Void> update(@PathVariable Integer id, @RequestBody Ator obj){
+    public ResponseEntity<Void> update(@PathVariable Integer id, @RequestBody HeroiNewDTO obj){
         obj.setId(id);
-        obj = service.update(obj);
+        service.update(obj);
         return ResponseEntity.accepted().build();
     }
 
@@ -50,9 +50,9 @@ public class AtorController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public ResponseEntity<List<AtorDTO>> findAll()  {
-        List<Ator> list = service.findAll();
-        List<AtorDTO> dto = list.stream().map(AtorDTO::new).collect(Collectors.toList());
+    public ResponseEntity<List<HeroiDTO>> findAll()  {
+        List<Heroi> list = service.findAll();
+        List<HeroiDTO> dto = list.stream().map(HeroiDTO::new).collect(Collectors.toList());
         return ResponseEntity.ok().body(dto);
     }
 

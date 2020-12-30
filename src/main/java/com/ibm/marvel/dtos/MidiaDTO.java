@@ -7,6 +7,8 @@ import lombok.Setter;
 
 import java.io.Serializable;
 
+import static com.ibm.marvel.services.parser.MidiaParser.classDefiner;
+
 @AllArgsConstructor
 @Getter
 @Setter
@@ -15,9 +17,11 @@ public class MidiaDTO implements Serializable {
 
     private Integer id;
     private String nome;
+    private String tipo;
 
     public MidiaDTO(Midia midia) {
         this.id = midia.getId();
         this.nome = midia.getNome();
+        this.tipo = classDefiner(midia);
     }
 }

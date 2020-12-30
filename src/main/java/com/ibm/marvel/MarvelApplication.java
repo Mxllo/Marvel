@@ -13,6 +13,7 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 @SpringBootApplication
 public class MarvelApplication implements CommandLineRunner {
@@ -45,8 +46,8 @@ public class MarvelApplication implements CommandLineRunner {
         Heroi h1 = new Heroi(null,"Blackwidow", "Inglaterra",a1,c1);
         a1.setHeroi(h1);
         Poder p1 = new Poder(null,"Agilidade",c1);
-        Filme f1 = new Filme(null,c1,"BlackMouth un", ClassificacaoIndicativa.DEZOITOANOS, LocalTime.of(1,10));
-        f1.getHerois().add(h1);
+        Filme f1 = new Filme(null,c1,"BlackMouth un", ClassificacaoIndicativa.DEZOITOANOS,
+                Set.of(h1), LocalTime.of(1,10));;
         midiaRepository.save(f1);
         h1.getMidias().add(f1);
         c1.getHerois().add(h1);

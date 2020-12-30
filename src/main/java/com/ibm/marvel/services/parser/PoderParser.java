@@ -10,10 +10,12 @@ import com.ibm.marvel.model.Poder;
 import com.ibm.marvel.services.CriadorService;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
-public class PoderParser {
+public class PoderParser implements Serializable {
+    private static final long serialVersionUID = 1L;
 
     public static Set<HeroiDTO> parseHeroi(Poder poder){
         Set<HeroiDTO> heroes = new HashSet<>();

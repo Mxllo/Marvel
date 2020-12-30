@@ -29,11 +29,9 @@ public class Heroi implements Serializable {
     private Set<Poder> poderes = new HashSet<>();
 
     @OneToOne @JoinColumn(name = "ator_id")
-    
     private Ator ator;
     @ManyToOne @JoinColumn(name="criador_id") 
     private Criador criador;
-
 
     @ManyToMany @JoinTable(name="HEROI_MIDIA", joinColumns = @JoinColumn(name ="heroi_id"),
             inverseJoinColumns = @JoinColumn(name ="midia_id")) 

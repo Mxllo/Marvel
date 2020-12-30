@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 
 
 @RestController
-@RequestMapping("/Poder")
+@RequestMapping("/poder")
 public class PoderController {
 
     @Autowired

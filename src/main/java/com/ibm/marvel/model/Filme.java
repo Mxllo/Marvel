@@ -6,6 +6,7 @@ import lombok.*;
 import javax.persistence.Entity;
 import java.time.LocalTime;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -15,8 +16,9 @@ public class Filme extends Midia{
     private LocalTime duracao;
 
 
-    public Filme(Integer id, Criador criador, String nome, ClassificacaoIndicativa classificacao, LocalTime duracao) {
-        super(id, criador, nome, classificacao);
+    public Filme(Integer id, Criador criador, String nome, ClassificacaoIndicativa classificacao,
+                 Set<Heroi> herois, LocalTime duracao) {
+        super(id, criador, nome,classificacao, herois );
         this.duracao = duracao;
     }
 }

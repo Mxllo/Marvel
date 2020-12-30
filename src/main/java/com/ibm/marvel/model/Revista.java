@@ -5,6 +5,7 @@ import lombok.*;
 
 import javax.persistence.Entity;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -17,8 +18,9 @@ public class Revista extends Midia{
         this.paginas = paginas;
     }
 
-    public Revista(Integer id, Criador criador, String nome, ClassificacaoIndicativa classificacao, Integer paginas) {
-        super(id, criador, nome, classificacao);
+    public Revista(Integer id, Criador criador, String nome, ClassificacaoIndicativa classificacao,
+                   Set<Heroi> herois, Integer paginas) {
+        super(id, criador, nome, classificacao, herois);
         this.paginas = paginas;
     }
 }
