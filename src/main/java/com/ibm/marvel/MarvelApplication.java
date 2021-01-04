@@ -23,8 +23,6 @@ public class MarvelApplication implements CommandLineRunner {
     @Autowired
     private CriadorRepository criadorRepository;
     @Autowired
-    private FilmeRepository filmeRepository;
-    @Autowired
     private HeroiRepository heroiRepository;
     @Autowired
     private MidiaRepository midiaRepository;
