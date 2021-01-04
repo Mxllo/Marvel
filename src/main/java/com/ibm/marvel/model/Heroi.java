@@ -32,10 +32,11 @@ public class Heroi implements Serializable {
     @ManyToMany(mappedBy = "herois")
     private Set<Midia> midias = new HashSet<>();
 
-    public Heroi(Integer id, String nome, String origem, Ator ator, Criador criador) {
+    public Heroi(Integer id, String nome, String origem, Set<Poder> poderes ,Ator ator, Criador criador) {
         this.id = id;
         this.nome = nome;
         this.origem = origem;
+        this.poderes = poderes;
         this.ator = ator;
         this.criador = criador;
     }

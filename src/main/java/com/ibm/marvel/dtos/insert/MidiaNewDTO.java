@@ -4,8 +4,8 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.time.LocalTime;
-import java.util.List;
+
+import java.util.Set;
 
 
 @Getter
@@ -16,12 +16,12 @@ public class MidiaNewDTO {
     private String nome;
     private String criador;
     private String classificacao;
-    private List<String> herois;
+    private Set<String> herois;
     @JsonFormat(pattern = "hh:MM")
     private String duracao;
     private Integer paginas;
 
-    public MidiaNewDTO(Integer id, String criador, String nome, String classificacao, List<String> herois) {
+    public MidiaNewDTO(Integer id, String criador, String nome, String classificacao, Set<String> herois) {
         this.id = id;
         this.criador = criador;
         this.nome = nome;

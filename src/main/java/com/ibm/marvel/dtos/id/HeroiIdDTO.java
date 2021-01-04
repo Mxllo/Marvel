@@ -12,7 +12,7 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
-import static com.ibm.marvel.services.parser.HeroiParser.*;
+import static com.ibm.marvel.parser.HeroiParser.*;
 
 @Setter
 @Getter

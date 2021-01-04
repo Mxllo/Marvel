@@ -7,7 +7,7 @@ import lombok.Setter;
 
 import java.io.Serializable;
 
-import static com.ibm.marvel.services.parser.MidiaParser.classDefiner;
+import static com.ibm.marvel.parser.MidiaParser.classDefiner;
 
 @AllArgsConstructor
 @Getter

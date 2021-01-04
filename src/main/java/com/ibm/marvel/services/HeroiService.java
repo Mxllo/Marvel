@@ -3,20 +3,18 @@ package com.ibm.marvel.services;
 import com.ibm.marvel.dtos.insert.HeroiNewDTO;
 import com.ibm.marvel.model.Criador;
 import com.ibm.marvel.model.Heroi;
-import com.ibm.marvel.model.Midia;
-import com.ibm.marvel.model.Poder;
 import com.ibm.marvel.repositories.HeroiRepository;
 import com.ibm.marvel.services.exception.DataIntegrityException;
+import com.ibm.marvel.services.exception.ObjectDuplicationException;
 import com.ibm.marvel.services.exception.ObjectNotFoundException;
+import com.ibm.marvel.services.helper.HeroiHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import java.io.Serializable;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 
 
 @Service
@@ -26,13 +24,7 @@ public class HeroiService implements Serializable {
     @Autowired
     private HeroiRepository repo;
     @Autowired
-    private CriadorService criadorService;
-    @Autowired
-    private AtorService atorService;
-    @Autowired
-    private PoderService poderService;
-    @Autowired
-    private MidiaService midiaService;
+    private HeroiHelper helper;
 
     public Heroi find(Integer id) {
         Optional<Heroi> obj = repo.findById(id);
@@ -41,15 +33,15 @@ public class HeroiService implements Serializable {
     }
 
     public HeroiNewDTO insert(HeroiNewDTO novoHeroi) {
-        repo.save(parseHeroi(novoHeroi));
+        checkExists(novoHeroi);
+        repo.save(helper.parseHeroi(novoHeroi));
         novoHeroi.setId(Integer.parseInt(String.valueOf(repo.count())));
         return novoHeroi;
     }
 
-    public HeroiNewDTO update(HeroiNewDTO obj) {
+    public void update(HeroiNewDTO obj) {
         find(obj.getId());
-        repo.save(parseHeroiComId(obj));
-        return obj;
+        repo.save(helper.parseHeroiComId(obj));
     }
 
     public void delete(Integer id) {
@@ -66,37 +58,10 @@ public class HeroiService implements Serializable {
         return repo.findAll();
     }
 
-    private Heroi parseHeroi(HeroiNewDTO novoHeroi){
-        return new Heroi(null, novoHeroi.getNome(), novoHeroi.getOrigem(),
-                parsePoder(novoHeroi.getPoderes()),
-                atorService.findByNome(novoHeroi.getAtor()),
-                criadorService.findByNome(novoHeroi.getCriador()),
-                parseMidia(novoHeroi.getMidias()));
-    }
 
-    private Heroi parseHeroiComId(HeroiNewDTO novoHeroi){
-        return new Heroi(novoHeroi.getId(), novoHeroi.getNome(), novoHeroi.getOrigem(),
-                parsePoder(novoHeroi.getPoderes()),
-                atorService.findByNome(novoHeroi.getAtor()),
-                criadorService.findByNome(novoHeroi.getCriador()),
-                parseMidia(novoHeroi.getMidias()));
-    }
-
-    public Set<Poder> parsePoder(Set<String> poderesString){
-        Set<Poder> poderes = new HashSet<>();
-        System.out.println(poderesString);
-        poderesString.forEach((poder) -> {
-            poderes.add(poderService.findByNome(poder));
-        });
-        return poderes;
-    }
-
-    public Set<Midia> parseMidia(Set<String> midiasString){
-        Set<Midia> midias = new HashSet<>();
-        midiasString.forEach((midia) -> {
-            midias.add(midiaService.findByNome(midia));
-        });
-        return midias;
+    private void checkExists(HeroiNewDTO obj) {
+        if(repo.findByNome(obj.getNome()).isPresent())
+            throw new ObjectDuplicationException("Criador já existente!");
     }
 
     public Heroi findByNome(String heroi) {

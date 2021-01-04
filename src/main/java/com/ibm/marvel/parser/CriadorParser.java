@@ -1,4 +1,4 @@
-package com.ibm.marvel.services.parser;
+package com.ibm.marvel.parser;
 
 import com.ibm.marvel.dtos.HeroiDTO;
 import com.ibm.marvel.dtos.MidiaDTO;
@@ -8,7 +8,7 @@ import com.ibm.marvel.model.Criador;
 import java.util.HashSet;
 import java.util.Set;
 
-import static com.ibm.marvel.services.parser.MidiaParser.classDefiner;
+import static com.ibm.marvel.parser.MidiaParser.classDefiner;
 
 public class CriadorParser {
 
@@ -35,4 +35,5 @@ public class CriadorParser {
         });
         return medias;
     }
+
 }

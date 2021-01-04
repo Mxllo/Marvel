@@ -1,14 +1,8 @@
-package com.ibm.marvel.services.parser;
+package com.ibm.marvel.parser;
 
 import com.ibm.marvel.dtos.CriadorDTO;
 import com.ibm.marvel.dtos.HeroiDTO;
-import com.ibm.marvel.dtos.MidiaDTO;
-import com.ibm.marvel.dtos.PoderDTO;
-import com.ibm.marvel.dtos.insert.PoderNewDTO;
-import com.ibm.marvel.model.Criador;
 import com.ibm.marvel.model.Poder;
-import com.ibm.marvel.services.CriadorService;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.Serializable;
 import java.util.HashSet;

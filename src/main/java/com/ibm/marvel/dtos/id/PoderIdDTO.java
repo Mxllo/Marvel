@@ -2,8 +2,6 @@ package com.ibm.marvel.dtos.id;
 
 import com.ibm.marvel.dtos.CriadorDTO;
 import com.ibm.marvel.dtos.HeroiDTO;
-import com.ibm.marvel.model.Criador;
-import com.ibm.marvel.model.Heroi;
 import com.ibm.marvel.model.Poder;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,7 +10,7 @@ import lombok.Setter;
 import java.util.HashSet;
 import java.util.Set;
 
-import static com.ibm.marvel.services.parser.PoderParser.*;
+import static com.ibm.marvel.parser.PoderParser.*;
 
 @Getter
 @Setter

@@ -1,4 +1,4 @@
-package com.ibm.marvel.services.parser;
+package com.ibm.marvel.parser;
 
 import com.ibm.marvel.dtos.CriadorDTO;
 import com.ibm.marvel.dtos.HeroiDTO;

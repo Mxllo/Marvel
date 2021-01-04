@@ -4,15 +4,13 @@ import com.ibm.marvel.dtos.CriadorDTO;
 import com.ibm.marvel.dtos.HeroiDTO;
 import com.ibm.marvel.model.Midia;
 import com.ibm.marvel.model.enums.ClassificacaoIndicativa;
-import io.micrometer.core.lang.Nullable;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.io.Serializable;
-import java.time.LocalTime;
 import java.util.Set;
 
-import static com.ibm.marvel.services.parser.MidiaParser.*;
+import static com.ibm.marvel.parser.MidiaParser.*;
 
 @Getter
 @Setter

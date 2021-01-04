@@ -20,16 +20,14 @@ public class HeroiNewDTO {
     private String ator;
     private String criador;
     private Set<String> poderes;
-    private Set<String> midias;
 
     public HeroiNewDTO(Integer id, String nome, String origem, String ator,
-                       String criador, Set<String> poderes, Set<String> midias) {
+                       String criador, Set<String> poderes) {
         this.id = id;
         this.nome = nome;
         this.origem = origem;
         this.ator = ator;
         this.criador = criador;
         this.poderes = poderes;
-        this.midias = midias;
     }
 }

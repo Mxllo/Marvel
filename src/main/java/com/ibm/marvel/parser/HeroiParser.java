@@ -1,19 +1,13 @@
-package com.ibm.marvel.services.parser;
+package com.ibm.marvel.parser;
 
 import com.ibm.marvel.dtos.*;
 import com.ibm.marvel.model.Heroi;
-import com.ibm.marvel.model.Midia;
-import com.ibm.marvel.model.Poder;
-import com.ibm.marvel.services.MidiaService;
-import com.ibm.marvel.services.PoderService;
-import org.springframework.beans.factory.annotation.Autowired;
 
-import javax.annotation.PostConstruct;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
-import static com.ibm.marvel.services.parser.MidiaParser.classDefiner;
+import static com.ibm.marvel.parser.MidiaParser.classDefiner;
 
 public class HeroiParser implements Serializable {
     private static final long serialVersionUID = 1L;

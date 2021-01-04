@@ -13,7 +13,7 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
-import static com.ibm.marvel.services.parser.CriadorParser.*;
+import static com.ibm.marvel.parser.CriadorParser.*;
 
 @NoArgsConstructor
 @AllArgsConstructor
