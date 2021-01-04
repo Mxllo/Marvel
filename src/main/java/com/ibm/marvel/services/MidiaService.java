@@ -1,5 +1,8 @@
 package com.ibm.marvel.services;
 
+import com.ibm.marvel.dtos.id.FilmeIdDTO;
+import com.ibm.marvel.dtos.id.MidiaIdDTO;
+import com.ibm.marvel.dtos.id.RevistaIdDTO;
 import com.ibm.marvel.dtos.insert.MidiaNewDTO;
 import com.ibm.marvel.model.*;
 import com.ibm.marvel.model.enums.ClassificacaoIndicativa;
@@ -110,6 +113,12 @@ public class MidiaService {
                 heroes.add(heroiService.findByNome(heroi)));
         System.out.println("**************************"+heroes.toString());
         return heroes;
+    }
+
+    public MidiaIdDTO createMidia(Midia midia){
+        if(parseTipo(midia).equals("Filme")){
+            return new FilmeIdDTO(midia);
+        }else return new RevistaIdDTO(midia);
     }
 
 }

@@ -8,6 +8,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -50,4 +51,8 @@ public abstract class Midia implements Serializable {
     public int hashCode() {
         return Objects.hash(id);
     }
+
+    public abstract Integer getPaginas();
+
+    public abstract LocalTime getDuracao();
 }

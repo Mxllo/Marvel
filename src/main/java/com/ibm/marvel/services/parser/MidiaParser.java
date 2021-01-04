@@ -2,6 +2,7 @@ package com.ibm.marvel.services.parser;
 
 import com.ibm.marvel.dtos.CriadorDTO;
 import com.ibm.marvel.dtos.HeroiDTO;
+import com.ibm.marvel.model.Filme;
 import com.ibm.marvel.model.Midia;
 
 import java.io.Serializable;
@@ -39,4 +40,10 @@ public class MidiaParser implements Serializable {
         return Integer.parseInt(hora.substring(hora.indexOf(":")+1));
     }
 
+    public static String parseTipo(Midia midia){
+        if(midia.getClass().toString().equals(Filme.class.toString())){
+            return "Filme";
+        }else
+            return "Revista";
+    }
 }

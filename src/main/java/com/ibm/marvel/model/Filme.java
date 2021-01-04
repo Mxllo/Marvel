@@ -15,10 +15,14 @@ import java.util.Set;
 public class Filme extends Midia{
     private LocalTime duracao;
 
-
     public Filme(Integer id, Criador criador, String nome, ClassificacaoIndicativa classificacao,
                  Set<Heroi> herois, LocalTime duracao) {
         super(id, criador, nome,classificacao, herois );
         this.duracao = duracao;
+    }
+
+    @Override
+    public Integer getPaginas() {
+        return null;
     }
 }

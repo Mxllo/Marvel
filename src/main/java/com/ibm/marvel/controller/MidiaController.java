@@ -27,7 +27,7 @@ public class MidiaController implements Serializable {
     @RequestMapping(value="/{id}", method = RequestMethod.GET)
     public ResponseEntity<MidiaIdDTO> find (@PathVariable Integer id)  {
         Midia obj = service.find(id);
-        return ResponseEntity.ok().body(new MidiaIdDTO(obj));
+        return ResponseEntity.ok().body(service.createMidia(obj));
     }
 
     @RequestMapping(value = "/filme", method = RequestMethod.POST)
