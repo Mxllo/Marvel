@@ -14,18 +14,9 @@ public class DefaultController implements ErrorController {
 
     @Override
     public String getErrorPath() {
-        return "/error";
+        return null;
     }
 
-    @RequestMapping("/error")
-    public String error(){
-        return "Erro - 404 Not Found";
-    }
-    /*
-    public void handleErrorWithRedirect(HttpServletResponse response) throws IOException {
-        response.sendRedirect("/error");
-    }
-*/
     @RequestMapping(value = "/")
     public void redirect(HttpServletResponse response) throws IOException {
         response.sendRedirect("/swagger-ui.html");
