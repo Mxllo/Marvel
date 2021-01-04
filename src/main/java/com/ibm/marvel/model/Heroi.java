@@ -25,7 +25,7 @@ public class Heroi implements Serializable {
     @ManyToMany @JoinTable(name="HEROI_PODER", joinColumns = @JoinColumn(name ="heroi_id"),
             inverseJoinColumns = @JoinColumn(name ="poder_id"))
     private Set<Poder> poderes = new HashSet<>();
-    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true) @JoinColumn(name = "ator_id")
+    @OneToOne(cascade = CascadeType.REMOVE, orphanRemoval = true) @JoinColumn(name = "ator_id")
     private Ator ator;
     @ManyToOne @JoinColumn(name="criador_id") 
     private Criador criador;

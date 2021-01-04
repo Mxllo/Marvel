@@ -24,7 +24,7 @@ public class Ator implements Serializable {
     private String nome;
     @JsonFormat(pattern = "dd/MM/yyyy") @Column(name="dataDeNascimento")
     private Date dataDeNascimento;
-    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "ator")
+    @OneToOne(cascade = CascadeType.REMOVE, orphanRemoval = true, mappedBy = "ator")
     private Heroi heroi;
 
     public Ator(Integer id, String nome, Date dataDeNascimento) {
