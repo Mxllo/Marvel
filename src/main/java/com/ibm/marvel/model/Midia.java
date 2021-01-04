@@ -28,7 +28,8 @@ public abstract class Midia implements Serializable {
     private Criador criador;
     private String nome;
     private ClassificacaoIndicativa classificacao;
-    @ManyToMany(mappedBy = "midias")
+    @ManyToMany @JoinTable(name="HEROI_MIDIA", joinColumns = @JoinColumn(name ="midia_id"),
+            inverseJoinColumns = @JoinColumn(name ="heroi_id"))
     private Set<Heroi> herois;
 
     public Midia(Integer id, Criador criador, String nome, ClassificacaoIndicativa classificacao, Set<Heroi> herois) {

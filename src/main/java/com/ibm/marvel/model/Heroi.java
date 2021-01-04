@@ -2,11 +2,10 @@ package com.ibm.marvel.model;
 
 import java.io.Serializable;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
-import java.io.Serializable;
+
 import java.util.*;
 
 @Entity
@@ -14,7 +13,7 @@ import java.util.*;
 @Getter
 @Setter
 @NoArgsConstructor
-
+@ToString
 public class Heroi implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,18 +22,14 @@ public class Heroi implements Serializable {
     private String nome;
     @Column(name="origem")
     private String origem;
-
     @ManyToMany @JoinTable(name="HEROI_PODER", joinColumns = @JoinColumn(name ="heroi_id"),
             inverseJoinColumns = @JoinColumn(name ="poder_id"))
     private Set<Poder> poderes = new HashSet<>();
-
-    @OneToOne @JoinColumn(name = "ator_id")
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true) @JoinColumn(name = "ator_id")
     private Ator ator;
     @ManyToOne @JoinColumn(name="criador_id") 
     private Criador criador;
-
-    @ManyToMany @JoinTable(name="HEROI_MIDIA", joinColumns = @JoinColumn(name ="heroi_id"),
-            inverseJoinColumns = @JoinColumn(name ="midia_id")) 
+    @ManyToMany(mappedBy = "herois")
     private Set<Midia> midias = new HashSet<>();
 
     public Heroi(Integer id, String nome, String origem, Ator ator, Criador criador) {

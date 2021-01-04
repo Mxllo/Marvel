@@ -48,8 +48,7 @@ public class MarvelApplication implements CommandLineRunner {
         Poder p1 = new Poder(null,"Agilidade",c1);
         Filme f1 = new Filme(null,c1,"BlackMouth un", ClassificacaoIndicativa.DEZOITOANOS,
                 Set.of(h1), LocalTime.of(1,10));;
-        midiaRepository.save(f1);
-        h1.getMidias().add(f1);
+        
         c1.getHerois().add(h1);
         c1.getMidias().add(f1);
         p1.getHerois().add(h1);

@@ -50,6 +50,7 @@ public class CriadorService {
 
     public Criador findByNome(String nome) {
         Optional<Criador> obj = repo.findByNome(nome);
+
         return obj.orElseThrow(() -> new ObjectNotFoundException(
                 "Objeto não encontrado! Nome: " + nome + ", Tipo: " + Criador.class.getName()));
     }

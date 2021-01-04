@@ -50,7 +50,7 @@ public class PoderService implements Serializable {
             repo.deleteById(id);
         } catch (
                 DataIntegrityViolationException e) {
-            throw new DataIntegrityException("Não foi possivel excluir a Poder, a mesma possui produtos.");
+            throw new DataIntegrityException("Não foi possivel excluir a Poder, um heroi possui esse poder.");
         }
     }
 

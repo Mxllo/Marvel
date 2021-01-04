@@ -3,6 +3,7 @@ package com.ibm.marvel.services;
 import com.ibm.marvel.dtos.id.FilmeIdDTO;
 import com.ibm.marvel.dtos.id.MidiaIdDTO;
 import com.ibm.marvel.dtos.id.RevistaIdDTO;
+import com.ibm.marvel.dtos.insert.HeroiNewDTO;
 import com.ibm.marvel.dtos.insert.MidiaNewDTO;
 import com.ibm.marvel.model.*;
 import com.ibm.marvel.model.enums.ClassificacaoIndicativa;
@@ -69,7 +70,7 @@ public class MidiaService {
             repo.deleteById(id);
         } catch (
                 DataIntegrityViolationException e) {
-            throw new DataIntegrityException("Não foi possivel excluir a Midia, a mesma possui produtos.");
+            throw new DataIntegrityException("Não foi possivel excluir a Midia.");
         }
     }
 
@@ -109,9 +110,9 @@ public class MidiaService {
     public Set<Heroi> parseHeroi(MidiaNewDTO novaMidia) {
         Set<Heroi> heroes = new HashSet<>();
         System.out.println(novaMidia.getHerois());
-        novaMidia.getHerois().forEach((heroi) ->
-                heroes.add(heroiService.findByNome(heroi)));
-        System.out.println("**************************"+heroes.toString());
+        novaMidia.getHerois().forEach((heroi) -> {
+            heroes.add(heroiService.findByNome(heroi));
+        });
         return heroes;
     }
 

@@ -18,8 +18,6 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
-import static com.ibm.marvel.services.parser.HeroiParser.parseMidia;
-import static com.ibm.marvel.services.parser.HeroiParser.parsePoder;
 
 @Service
 public class HeroiService implements Serializable {
@@ -60,7 +58,7 @@ public class HeroiService implements Serializable {
             repo.deleteById(id);
         } catch (
                 DataIntegrityViolationException e) {
-            throw new DataIntegrityException("Não foi possivel excluir a Heroi, a mesma possui produtos.");
+            throw new DataIntegrityException("Não foi possivel excluir a Heroi, o mesmo está em uma mídia.");
         }
     }
 

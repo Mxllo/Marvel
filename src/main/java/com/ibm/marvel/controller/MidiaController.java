@@ -30,6 +30,7 @@ public class MidiaController implements Serializable {
         return ResponseEntity.ok().body(service.createMidia(obj));
     }
 
+    @ResponseBody
     @RequestMapping(value = "/filme", method = RequestMethod.POST)
     public ResponseEntity<Void> insertFilme(@RequestBody MidiaNewDTO obj) {
         obj = service.insertFilme(obj);
@@ -39,7 +40,7 @@ public class MidiaController implements Serializable {
     }
 
     @RequestMapping(value = "/revista", method = RequestMethod.POST)
-    public ResponseEntity<Void> insertRevista(@RequestBody MidiaNewDTO obj) {
+    public ResponseEntity<MidiaIdDTO> insertRevista(@RequestBody MidiaNewDTO obj) {
         obj = service.insertRevista(obj);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
                 .buildAndExpand(obj.getId()).toUri();
