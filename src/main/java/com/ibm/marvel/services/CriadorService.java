@@ -1,6 +1,7 @@
 package com.ibm.marvel.services;
 
 import com.ibm.marvel.dtos.insert.AtorNewDTO;
+import com.ibm.marvel.dtos.insert.CriadorNewDTO;
 import com.ibm.marvel.model.Criador;
 import com.ibm.marvel.repositories.CriadorRepository;
 import com.ibm.marvel.services.exception.DataIntegrityException;
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
+import static com.ibm.marvel.parser.CriadorParser.parseCriador;
 import static com.ibm.marvel.services.helper.CriadorHelper.checkMaxCreations;
 
 @Service
@@ -29,10 +31,11 @@ public class CriadorService {
                 "Objeto não encontrado! Id: " + id + ", Tipo: " + Criador.class.getName()));
     }
 
-    public Criador insert(Criador obj) {
+    public CriadorNewDTO insert(CriadorNewDTO obj) {
         obj.setId(null);
-        checkExists(obj);
-        return repo.save(obj);
+        checkExists(parseCriador(obj));
+        repo.save(parseCriador(obj));
+        return obj;
     }
 
     public Criador update(Criador obj) {

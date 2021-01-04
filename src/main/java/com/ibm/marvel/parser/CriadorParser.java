@@ -3,6 +3,7 @@ package com.ibm.marvel.parser;
 import com.ibm.marvel.dtos.HeroiDTO;
 import com.ibm.marvel.dtos.MidiaDTO;
 import com.ibm.marvel.dtos.PoderDTO;
+import com.ibm.marvel.dtos.insert.CriadorNewDTO;
 import com.ibm.marvel.model.Criador;
 
 import java.util.HashSet;
@@ -36,4 +37,8 @@ public class CriadorParser {
         return medias;
     }
 
+
+    public static Criador parseCriador(CriadorNewDTO criador){
+        return new Criador(criador.getId(), criador.getNome());
+    }
 }

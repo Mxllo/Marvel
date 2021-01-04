@@ -2,6 +2,7 @@ package com.ibm.marvel.controller;
 
 import com.ibm.marvel.dtos.CriadorDTO;
 import com.ibm.marvel.dtos.id.CriadorIdDTO;
+import com.ibm.marvel.dtos.insert.CriadorNewDTO;
 import com.ibm.marvel.model.Criador;
 import com.ibm.marvel.services.CriadorService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +28,7 @@ public class CriadorController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<Void> insert(@RequestBody Criador obj) {
+    public ResponseEntity<Void> insert(@RequestBody CriadorNewDTO obj) {
         obj = service.insert(obj);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
                 .buildAndExpand(obj.getId()).toUri();

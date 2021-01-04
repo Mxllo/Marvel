@@ -72,6 +72,6 @@ public class PoderService implements Serializable {
 
     private void checkExists(PoderNewDTO obj) {
         if(repo.findByNome(obj.getNome()).isPresent())
-            throw new ObjectDuplicationException("Criador já existente!");
+            throw new ObjectDuplicationException("Poder já existente!");
     }
 }

@@ -7,12 +7,10 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 public class DataIntegrityException extends RuntimeException {
 
     private static final long serialVersionUID = 1L;
+    private static final Throwable ROOT_CAUSE = new Throwable();
 
     public DataIntegrityException(String message) {
-        super(message);
+        super(message, ROOT_CAUSE, false, false);
     }
 
-    public DataIntegrityException(String message, Throwable cause) {
-        super(message, cause);
-    }
 }
