@@ -10,12 +10,7 @@ import java.io.IOException;
 
 @RestController
 @RequestMapping("/")
-public class DefaultController implements ErrorController {
-
-    @Override
-    public String getErrorPath() {
-        return null;
-    }
+public class DefaultController{
 
     @RequestMapping(value = "/")
     public void redirect(HttpServletResponse response) throws IOException {
